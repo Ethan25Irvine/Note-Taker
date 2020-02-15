@@ -10,6 +10,7 @@ router.get("/api/notes", function(req, res) {
     res.json(noteData);
 });
 
+
 router.post("/api/notes", function(req, res) {
     let data = req.body;
     // console.log(data);
@@ -27,7 +28,13 @@ router.post("/api/notes", function(req, res) {
     
     });
 });
+let id = 1
+router.delete('/api/notes/:id', function(req, res) {
+  
+    let getID = parseInt(req.params.id)
+    noteData.splice(noteData.findIndex(item => item.id === getID),1)
 
-
-
+    res.json(noteData);
+  });
+   
 module.exports = router
